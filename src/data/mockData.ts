@@ -3,7 +3,8 @@ export type OnboardingStatus = "not-started" | "in-progress" | "completed";
 export type ExitStatus = "none" | "resignation-submitted" | "notice-period" | "clearance" | "completed";
 export type TaskStatus = "pending" | "in-progress" | "completed" | "overdue";
 export type Department = "Engineering" | "Design" | "Marketing" | "HR" | "Finance" | "Admin" | "IT";
-export type TaskDepartment = "HR" | "IT" | "Admin" | "Manager" | "Employee" | "Finance";
+export type TaskDepartment = "HR" | "IT" | "Admin" | "Manager" | "Employee" | "Finance" | "ProjectCoordinator";
+export type ExitTaskDeptStatus = "pending" | "completed" | "issue";
 
 export interface TaskComment {
   id: string;

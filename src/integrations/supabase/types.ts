@@ -14,7 +14,246 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      document_templates: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          document_type: string
+          id: string
+          name: string
+          placeholders: Json
+          template_html: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          document_type: string
+          id?: string
+          name: string
+          placeholders?: Json
+          template_html?: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          document_type?: string
+          id?: string
+          name?: string
+          placeholders?: Json
+          template_html?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      exit_clearance_forms: {
+        Row: {
+          contact_number: string
+          department: string
+          designation: string
+          employee_code: string
+          employee_id: string
+          employee_name: string
+          forwarding_address: string
+          handover_declaration: boolean
+          id: string
+          last_working_day: string
+          manager: string
+          personal_email: string
+          status: string
+          submitted_at: string
+          updated_at: string
+        }
+        Insert: {
+          contact_number: string
+          department: string
+          designation: string
+          employee_code: string
+          employee_id: string
+          employee_name: string
+          forwarding_address: string
+          handover_declaration?: boolean
+          id?: string
+          last_working_day: string
+          manager: string
+          personal_email: string
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+        }
+        Update: {
+          contact_number?: string
+          department?: string
+          designation?: string
+          employee_code?: string
+          employee_id?: string
+          employee_name?: string
+          forwarding_address?: string
+          handover_declaration?: boolean
+          id?: string
+          last_working_day?: string
+          manager?: string
+          personal_email?: string
+          status?: string
+          submitted_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      exit_dept_tasks: {
+        Row: {
+          assigned_to: string | null
+          clearance_form_id: string | null
+          created_at: string
+          deadline: string | null
+          department: string
+          description: string | null
+          employee_id: string
+          id: string
+          notes: string | null
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assigned_to?: string | null
+          clearance_form_id?: string | null
+          created_at?: string
+          deadline?: string | null
+          department: string
+          description?: string | null
+          employee_id: string
+          id?: string
+          notes?: string | null
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assigned_to?: string | null
+          clearance_form_id?: string | null
+          created_at?: string
+          deadline?: string | null
+          department?: string
+          description?: string | null
+          employee_id?: string
+          id?: string
+          notes?: string | null
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exit_dept_tasks_clearance_form_id_fkey"
+            columns: ["clearance_form_id"]
+            isOneToOne: false
+            referencedRelation: "exit_clearance_forms"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exit_document_uploads: {
+        Row: {
+          document_id: string | null
+          email_sent: boolean
+          email_sent_at: string | null
+          employee_id: string
+          file_name: string
+          file_url: string
+          id: string
+          uploaded_at: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          document_id?: string | null
+          email_sent?: boolean
+          email_sent_at?: string | null
+          employee_id: string
+          file_name: string
+          file_url: string
+          id?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          document_id?: string | null
+          email_sent?: boolean
+          email_sent_at?: string | null
+          employee_id?: string
+          file_name?: string
+          file_url?: string
+          id?: string
+          uploaded_at?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exit_document_uploads_document_id_fkey"
+            columns: ["document_id"]
+            isOneToOne: false
+            referencedRelation: "generated_documents"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      generated_documents: {
+        Row: {
+          approved_at: string | null
+          approved_by: string | null
+          created_at: string
+          created_by: string | null
+          document_type: string
+          employee_id: string
+          id: string
+          rendered_html: string
+          signature_data: string | null
+          stamp_data: string | null
+          status: string
+          template_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          created_by?: string | null
+          document_type: string
+          employee_id: string
+          id?: string
+          rendered_html?: string
+          signature_data?: string | null
+          stamp_data?: string | null
+          status?: string
+          template_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          approved_at?: string | null
+          approved_by?: string | null
+          created_at?: string
+          created_by?: string | null
+          document_type?: string
+          employee_id?: string
+          id?: string
+          rendered_html?: string
+          signature_data?: string | null
+          stamp_data?: string | null
+          status?: string
+          template_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "generated_documents_template_id_fkey"
+            columns: ["template_id"]
+            isOneToOne: false
+            referencedRelation: "document_templates"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
