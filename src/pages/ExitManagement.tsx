@@ -6,8 +6,8 @@ import { employees, type Employee } from "@/data/mockData";
 import { supabase } from "@/integrations/supabase/client";
 import { cn } from "@/lib/utils";
 import {
-  ChevronDown, ChevronRight, ClipboardList, FileText, Timeline,
-  CheckCircle2, AlertCircle, Clock, Sparkles, Plus, RefreshCw,
+  ChevronDown, ChevronRight, ClipboardList, FileText,
+  CheckCircle2, Clock, Sparkles, Plus,
 } from "lucide-react";
 import { toast } from "sonner";
 import { ExitClearanceFormDialog } from "@/components/exit/ExitClearanceFormDialog";
